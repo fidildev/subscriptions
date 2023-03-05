@@ -1,5 +1,27 @@
+spring:
+  application:
+    name: subscriptions
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+  datasource:
+      url: jdbc:postgresql://localhost:5432/subscription
+      username: subscription
+      password: subscription
 axon:
+  axonserver:
+    enabled: false
   serializer:
-    general: jackson
     events: jackson
     messages: jackson
+    general: jackson
+  kafka:
+    clientid: ${spring.application.name}
+    producer:
+      retries: 0
+      bootstrap-servers: localhost:29092
+    consumer:
+      bootstrap-servers: localhost:29092
+    properties:
+      security:
+        protocol: PLAINTEXT
