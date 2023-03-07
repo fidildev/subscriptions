@@ -16,7 +16,7 @@ axon:
     messages: jackson
     general: jackson
   kafka:
-    clientid: ${spring.application.name}
+    clientId: ${spring.application.name}
     producer:
       retries: 0
       bootstrap-servers: localhost:29092
