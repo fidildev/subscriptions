@@ -5,7 +5,7 @@ import java.util.*
 
 data class CreateSubscription(
     @TargetAggregateIdentifier
-    val id: UUID,
+    val id: UUID = UUID.randomUUID(),
     val ownerId: String,
     val type: SubscriptionType,
     val billingCycle: BillingCycle,

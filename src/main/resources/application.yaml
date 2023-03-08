@@ -19,9 +19,9 @@ axon:
     clientId: ${spring.application.name}
     producer:
       retries: 0
-      bootstrap-servers: localhost:29092
+      bootstrap-servers: localhost:9092
     consumer:
-      bootstrap-servers: localhost:29092
+      bootstrap-servers: localhost:9092
     properties:
       security:
         protocol: PLAINTEXT

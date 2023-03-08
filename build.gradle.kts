@@ -1,6 +1,6 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.springframework.boot") version "3.0.2"
@@ -28,8 +28,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.axonframework:axon-spring-boot-starter")
-    implementation("org.axonframework.extensions.kafka:axon-kafka-spring-boot-starter:4.7.0")
-    implementation("org.apache.kafka:kafka-clients:3.4.0")
+//    implementation("org.axonframework.extensions.kafka:axon-kafka-spring-boot-starter:4.7.0")
+//    implementation("org.apache.kafka:kafka-clients:3.4.0")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
