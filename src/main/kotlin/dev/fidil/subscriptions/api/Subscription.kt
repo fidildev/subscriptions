@@ -5,10 +5,10 @@ import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle
 import org.axonframework.spring.stereotype.Aggregate
-import java.util.UUID
+import java.util.*
 
 @Aggregate
-class Subscription {
+class Subscription() {
 
     @AggregateIdentifier
     private lateinit var id: UUID
@@ -17,14 +17,15 @@ class Subscription {
     private lateinit var billingCycle: BillingCycle
 
     @CommandHandler
-    fun constructor(command: CreateSubscription) {
-        this.id = UUID.randomUUID()
-        AggregateLifecycle.apply(SubscriptionCreated(
-            this.id,
-            command.ownerId,
-            command.type,
-            command.billingCycle
-        ))
+    constructor(command: CreateSubscription) : this() {
+        AggregateLifecycle.apply(
+            SubscriptionCreated(
+                command.id,
+                command.ownerId,
+                command.type,
+                command.billingCycle
+            )
+        )
     }
 
     @CommandHandler
@@ -45,6 +46,7 @@ class Subscription {
 
     @EventSourcingHandler
     fun on(event: SubscriptionCreated) {
+        this.id = event.id
         this.type = event.type
         this.billingCycle = event.billingCycle
         this.ownerId = event.ownerId
